@@ -1,0 +1,299 @@
+facebook,United States,2013,11000-12000,79,20000-21000
+facebook,United Kingdom,2013,1975,68,2337
+facebook,Uganda,2013,1,0,1
+facebook,Turkey,2013,96,47,170
+facebook,Thailand,2013,2,0,5
+facebook,Taiwan,2013,229,84,329
+facebook,Switzerland,2013,32,13,36
+facebook,Sweden,2013,54,54,66
+facebook,Spain,2013,479,51,715
+facebook,South Korea,2013,7,14,15
+facebook,South Africa,2013,14,0,9
+facebook,Slovenia,2013,6,50,8
+facebook,Singapore,2013,107,70,117
+facebook,Serbia,2013,1,0,1
+facebook,Russia,2013,1,0,1
+facebook,Romania,2013,16,63,36
+facebook,Qatar,2013,3,0,3
+facebook,Portugal,2013,177,42,213
+facebook,Poland,2013,233,9,158
+facebook,Philippines,2013,4,25,4
+facebook,Peru,2013,13,15,14
+facebook,Panama,2013,2,0,2
+facebook,Pakistan,2013,35,77,47
+facebook,Norway,2013,16,31,16
+facebook,New Zealand,2013,106,58,119
+facebook,Netherlands,2013,11,36,15
+facebook,Nepal,2013,3,33,3
+facebook,Montenegro,2013,2,0,2
+facebook,Mongolia,2013,2,0,2
+facebook,Mexico,2013,78,37,127
+facebook,Malta,2013,89,60,97
+facebook,Malaysia,2013,7,0,197
+facebook,Macedonia,2013,9,33,11
+facebook,Lithuania,2013,6,17,7
+facebook,Kosovo,2013,2,0,11
+facebook,Japan,2013,1,0,1
+facebook,Ivory Coast,2013,4,0,4
+facebook,Italy,2013,1705,53,2306
+facebook,Israel,2013,113,50,132
+facebook,Ireland,2013,34,71,40
+facebook,India,2013,3245,50,4144
+facebook,Iceland,2013,1,100,1
+facebook,Hungary,2013,25,36,24
+facebook,Hong Kong,2013,1,100,1
+facebook,Greece,2013,122,54,141
+facebook,Germany,2013,1886,37,2068
+facebook,France,2013,1547,39,1598
+facebook,Finland,2013,12,75,15
+facebook,El Salvador,2013,2,0,2
+facebook,Egypt,2013,8,0,11
+facebook,Ecuador,2013,2,0,3
+facebook,Denmark,2013,11,55,11
+facebook,Czech Republic,2013,10,60,13
+facebook,Cyprus,2013,3,33,4
+facebook,Croatia,2013,2,0,2
+facebook,Costa Rica,2013,4,0,6
+facebook,Colombia,2013,27,15,41
+facebook,Chile,2013,215,68,340
+facebook,Canada,2013,192,44,219
+facebook,Cambodia,2013,1,0,1
+facebook,Bulgaria,2013,1,0,1
+facebook,Brazil,2013,715,33,857
+facebook,Botswana,2013,3,0,7
+facebook,Bosnia and Herzegovina,2013,4,25,11
+facebook,Belgium,2013,150,70,169
+facebook,Barbados,2013,3,0,3
+facebook,Bangladesh,2013,1,0,12
+facebook,Austria,2013,35,17,41
+facebook,Australia,2013,546,64,601
+facebook,Argentina,2013,152,27,218
+facebook,Albania,2013,6,83,12
+google,Netherlands,2010,43,67,-1
+google,Netherlands,2012,59,76,59
+google,Netherlands,2011,101,0,52,262
+google,Argentina,2012,251,0,38,353
+google,Argentina,2010,261,0,2,-1
+google,Argentina,2011,275,0,33,389
+google,Australia,2010,545,0,51,-1
+google,Australia,2011,805,0,69,908
+google,Australia,2012,1107,0,65,1552
+google,Belgium,2010,156,0,4,-1
+google,Belgium,2011,189,0,67,235
+google,Belgium,2012,227,0,65,280
+google,Brazil,2011,2318,0,89,4044
+google,Brazil,2012,2777,0,72,5166
+google,Brazil,2010,4239,0,32,-1
+google,United Kingdom,2010,2505,0,33,-1
+google,United Kingdom,2011,2734,0,64,3208
+google,United Kingdom,2012,2883,0,67,3650
+google,Chile,2012,210,0,51,311
+google,Chile,2011,235,0,43,329
+google,Chile,2010,236,0,34,-1
+google,Spain,2010,731,0,3,-1
+google,Spain,2011,848,0,58,1319
+google,Spain,2012,978,0,51,1702
+google,South Korea,2010,360,0,24,-1
+google,South Korea,2011,516,0,37,923
+google,South Korea,2012,778,0,33,1688
+google,Hong Kong,2010,140,0,38,-1
+google,Hong Kong,2011,325,0,48,325
+google,Hong Kong,2012,447,0,32,443
+google,India,2010,3129,0,43,-1
+google,India,2011,3946,0,68,5866
+google,India,2012,4750,0,65,7573
+google,Israel,2010,84,0,49,-1
+google,Israel,2011,111,0,6,146
+google,Israel,2012,111,0,59,121
+google,Italy,2010,1488,0,34,-1
+google,Italy,2012,1687,0,34,2105
+google,Italy,2011,1778,0,56,2387
+google,Japan,2010,128,0,51,-1
+google,Japan,2011,165,0,72,199
+google,Japan,2012,228,0,73,282
+google,Canada,2010,38,55,-1
+google,Canada,2012,88,0,24,127
+google,Canada,2011,91,0,37,124
+google,Mexico,2010,34,56,-1
+google,Mexico,2011,115,0,32,188
+google,Mexico,2012,161,0,34,286
+google,Norway,2012,37,70,37
+google,Norway ,2011,49,69,61
+google,Portugal,2010,165,0,24,-1
+google,Portugal,2011,308,0,4,519
+google,Portugal,2012,384,0,22,525
+google,Poland,2010,272,12,-1
+google,Poland,2011,507,0,16,616
+google,Poland,2012,760,0,19,958
+google,France,2010,2038,0,28,-1
+google,France,2011,2716,0,45,3331
+google,France,2012,3239,0,43,3943
+google,Germany,2010,1436,0,41,-1
+google,Germany,2011,2491,0,54,3786
+google,Germany,2012,3083,0,41,3951
+google,Singapore,2012,185,0,72,250
+google,Singapore,2011,208,0,79,312
+google,Singapore,2010,224,0,46,-1
+google,Switzerland,2010,35,-1,-1
+google,Switzerland,2011,105,0,68,118
+google,Switzerland,2012,131,0,68,172
+google,Taiwan,2010,286,0,35,-1
+google,Taiwan,2011,379,0,78,570
+google,Taiwan,2012,561,0,69,673
+google,Denmark,2012,66,0,68,73
+google,Czech Republic,2012,95,0,32,128
+google,Turkey,2010,96,0,-1
+google,Turkey,2011,161,0,166
+google,Turkey,2012,261,0,264
+google,Hungary,2010,68,0,-1
+google,Hungary,2011,154,0,161
+google,Hungary,2012,187,0,290
+google,Russia,2011,100,0,112
+google,Russia,2012,155,0,01,181
+google,United States,2010,8888,0,94,-1
+google,United States,2012,16407,0,9,31072
+google,United States,2011,12271,0,93,23300
+yahoo,Argentina,2013,186,81,210
+yahoo,Australia,2013,704,66,799
+yahoo,Brazil,2013,308,83,385
+yahoo,Canada,2013,29,97,43
+yahoo,France,2013,1855,82,2373
+yahoo,Germany,2013,4295,81,5306
+yahoo,Hong Kong,2013,839,100,839
+yahoo,India,2013,1490,66,2704
+yahoo,Ireland,2013,17,88,17
+yahoo,Italy,2013,2637,78,2937
+yahoo,Mexico,2013,150,75,202
+yahoo,New Zealand,2013,9,89,9
+yahoo,Singapore,2013,138,59,189
+yahoo,Spain,2013,718,82,958
+yahoo,Taiwan,2013,1942,98,2650
+yahoo,United Kingdom,2013,1709,73,2832
+yahoo,United States,2013,12444,98,40322
+linkedin,United States,2012,109,80,145
+linkedin,Germany,2012,1,0,1
+linkedin,India,2012,2,0,2
+linkedin,Spain,2012,1,0,1
+linkedin,United Kingdom,2012,2,0,2
+linkedin,United States,2011,65,84,84
+linkedin,France,2011,2,0,4
+linkedin,India,2011,2,0,5
+linkedin,Spain,2011,1,0,1
+linkedin,United Kingdom,2011,3,0,3
+linkedin,Argentina,2013,1,0,1
+linkedin,Australia,2013,1,0,1
+linkedin,Denmark,2013,1,100,1
+linkedin,Germany,2013,2,0,2
+linkedin,Italy,2013,1,0,1
+linkedin,United Kingdom,2013,4,0,4
+linkedin,Spain,2013,2,0,2
+linkedin,Turkey,2013,1,0,1
+linkedin,United States,2013,70,57,84
+twitter,Australia,2012,<10,33,<10
+twitter,Austria,2012,<10,0,<10
+twitter,Brazil,2012,<10,0,<10
+twitter,Bulgaria,2012,<10,0,<10
+twitter,Canada,2012,11,18,12
+twitter,France,2012,<10,0,<10
+twitter,Germany,2012,<10,0,<10
+twitter,Greece,2012,<10,33,<10
+twitter,India,2012,<10,0,<10
+twitter,Indonesia,2012,<10,0,<10
+twitter,Italy,2012,<10,0,<10
+twitter,Japan,2012,98,20,147
+twitter,Korea, Republic of,2012,<10,0,<10
+twitter,Mexico,2012,<10,0,<10
+twitter,Netherlands,2012,<10,50,<10
+twitter,Peru,2012,<10,0,<10
+twitter,Portugal,2012,<10,0,<10
+twitter,Spain,2012,<10,0,12
+twitter,Sweden,2012,<10,0,<10
+twitter,Switzerland,2012,<10,0,<10
+twitter,Turkey,2012,<10,0,<10
+twitter,United Kingdom,2012,11,18,11
+twitter,United States,2012,679,75,948
+twitter,Austria,2013,-1,-1,-1
+twitter,Belgium,2013,-1,-1,-1
+twitter,Bulgaria,2013,-1,-1,-1
+twitter,Peru,2013,-1,-1,-1
+twitter,Portugal,2013,-1,-1,-1
+twitter,Sweden,2013,-1,-1,-1
+twitter,Canada,2013,15,7,22
+twitter,France,2013,12,0,54
+twitter,United Kingdom,2013,25,4,27
+twitter,Brazil,2013,34,12,43
+twitter,Japan,2013,62,5,75
+twitter,United States,2013,815,69,1145
+twitter,Argentina,2013,<10,0,13
+twitter,Australia,2013,<10,20,<10
+twitter,Denmark,2013,<10,0,<10
+twitter,Germany,2013,<10,0,<10
+twitter,Greece,2013,<10,0,15
+twitter,India,2013,<10,0,<10
+twitter,Indonesia,2013,<10,0,<10
+twitter,Ireland,2013,<10,0,<10
+twitter,Israel,2013,<10,0,<10
+twitter,Italy,2013,<10,0,<10
+twitter,Mexico,2013,<10,0,<10
+twitter,Netherlands,2013,<10,33,<10
+twitter,Qatar,2013,<10,0,<10
+twitter,Republic of Korea,2013,-1,-1,-1
+twitter,South Sudan,2013,<10,0,<10
+twitter,Spain,2013,<10,0,<10
+twitter,Switzerland,2013,<10,0,<10
+twitter,Turkey,2013,<10,0,<10
+leaseweb,Netherlands,2012,230,-1,-1
+leaseweb,Germany,2012,422,-1,-1
+leaseweb,United States,2012,18,-1,-1
+Sonic,-1,2011,21,41,9
+Sonic,-1,2012,16,20,3
+Bit,-1,2012,15,66,-1
+microsoft,Belgium,2012,727,87,1140
+microsoft,Brazil,2012,2214,84,4176
+microsoft,Canada,2012,103,94,385
+microsoft,Chile,2012,530,84,791
+microsoft,Colombia,2012,227,83,623
+microsoft,Costa Rica,2012,98,93,152
+microsoft,Czech Republic,2012,19,84,27
+microsoft,Denmark,2012,128,87,191
+microsoft,Dominican Republic,2012,17,100,228
+microsoft,Ecuador,2012,59,97,95
+microsoft,El Salvador,2012,9,89,10
+microsoft,Finland,2012,56,96,328
+microsoft,France,2012,8603,86,17973
+microsoft,Germany,2012,8419,84,13226
+microsoft,Greece,2012,9,67,11
+microsoft,Guatemala,2012,2,100,4
+microsoft,Hong Kong,2012,1041,79,1049
+microsoft,Hungary,2012,123,83,175
+microsoft,Iceland,2012,8,88,9
+microsoft,India,2012,418,89,594
+microsoft,Ireland,2012,72,71,222
+microsoft,Israel,2012,54,85,141
+microsoft,Italy,2012,1519,83,2098
+microsoft,Japan,2012,572,94,766
+microsoft,Korea,2012,616,81,1091
+microsoft,Luxembourg,2012,55,87,81
+microsoft,Malta,2012,75,89,79
+microsoft,Mexico,2012,1323,90,2979
+microsoft,Netherlands,2012,859,78,1438
+microsoft,New Zealand,2012,64,73,128
+microsoft,Norway,2012,187,90,426
+microsoft,Panama,2012,26,92,32
+microsoft,Peru,2012,84,93,257
+microsoft,Poland,2012,70,79,110
+microsoft,Portugal,2012,548,86,710
+microsoft,Singapore,2012,179,94,553
+microsoft,Slovakia,2012,28,89,29
+microsoft,Slovenia,2012,1,0,1
+microsoft,Spain,2012,1981,84,3400
+microsoft,Sweden,2012,326,90,552
+microsoft,Taiwan,2012,4381,86,8305
+microsoft,Thailand,2012,83,88,105
+microsoft,Turkey,2012,11434,79,14077
+microsoft,United Kingdom,2012,9226,76,14301
+microsoft,United States,2012,11073,79,24565
+microsoft,Uruguay,2012,1,100,1
+microsoft,Venezuala,2012,11,91,21
+dropbox,United States,2012,87,82,164
+dropbox,Non-U.S.,2012,<20,0,<20
