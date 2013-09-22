@@ -297,3 +297,60 @@ microsoft,Uruguay,2012,1,100,1
 microsoft,Venezuala,2012,11,91,21
 dropbox,United States,2012,87,82,164
 dropbox,Non-U.S.,2012,<20,0,<20
+skype,Argentina,2012,2,-1,5
+skype,Armenia,2012,2,-1,6
+skype,Australia,2012,195,-1,424
+skype,Austria,2012,10,-1,18
+skype,Belarus,2012,5,-1,35
+skype,Belgium,2012,39,-1,165
+skype,Brazil,2012,8,-1,36
+skype,Bulgaria,2012,7,-1,15
+skype,Canada,2012,20,-1,58
+skype,China,2012,6,-1,50
+skype,Czech Republic,2012,33,-1,109
+skype,Denmark,2012,16,-1,41
+skype,Estonia,2012,6,-1,12
+skype,Finland,2012,7,-1,9
+skype,France,2012,402,-1,827
+skype,Germany,2012,686,-1,2646
+skype,Greece,2012,9,-1,11
+skype,Hong Kong,2012,0,-1,0
+skype,Hungary,2012,7,-1,28
+skype,Iceland,2012,2,-1,4
+skype,India,2012,53,-1,101
+skype,Ireland,2012,4,-1,7
+skype,Israel,2012,10,-1,14
+skype,Italy,2012,96,-1,648
+skype,Japan,2012,40,-1,88
+skype,Korea,2012,7,-1,9
+skype,Latvia,2012,5,-1,60
+skype,Lebanon,2012,1,-1,1
+skype,Lithuania,2012,8,-1,35
+skype,Luxembourg,2012,98,-1,446
+skype,Malta,2012,5,-1,9
+skype,Mexico,2012,3,-1,10
+skype,Netherlands,2012,2,-1,2
+skype,New Zealand,2012,1,-1,2
+skype,Norfolk Island,2012,0,-1,0
+skype,Norway,2012,14,-1,23
+skype,Pakistan,2012,0,-1,0
+skype,Poland,2012,17,-1,42
+skype,Portugal,2012,1,-1,1
+skype,Puerto Rico,2012,2,-1,4
+skype,Qatar,2012,2,-1,5
+skype,Russian Federation,2012,2,-1,5
+skype,Singapore,2012,4,-1,5
+skype,Slovakia,2012,1,-1,1
+skype,Slovenia,2012,1,-1,3
+skype,South Africa,2012,1,-1,6
+skype,South Georgia,2012,0,-1,0
+skype,Spain,2012,11,-1,40
+skype,Sweden,2012,43,-1,150
+skype,Switzerland,2012,74,-1,148
+skype,Taiwan,2012,316,-1,1499
+skype,Tanzania,2012,1,-1,1
+skype,Ukraine,2012,5,-1,10
+skype,United Arab Emirates,2012,1,-1,1
+skype,United Kingdom,2012,1268,-1,2720
+skype,United States,2012,1154,-1,4814
+
