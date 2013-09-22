@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <script src="./libs/react.js"></script>
+    <script src="./libs/JSXTransformer.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/jsx">
+    /** @jsx React.DOM */
+    var Choice = React.createClass( {
+
+      getInitialState: function() {
+        return {
+          selected : ''
+        };
+      },
+
+      onSelect : function(event) {
+        this.props.answer( event );
+        this.setState( { selected : event.target.value } );
+      },
+
+      render : function() {
+        var component = this;
+
+        var selectors = {
+          display: this.props.answered ? 'none' : 'inline'
+        };
+
+
+        var numbers = {
+          display: this.props.answered ? 'inline' : 'none'
+        };  
+
+        return(
+          <div>
+          {
+            this.props.choices.map(function(c) {
+              style = {
+                'font-weight' : component.state.selected == c.name ? 'bold' : '',
+                color : component.props.answered && c.correct ? 'green' : ''
+              }
+              return  (<p key={c.name} style={style}>{c.name}
+                        <input name="choice" type="radio" style={selectors} value={c.name} onChange={component.onSelect}></input>
+                        <span style={numbers}>{c.number}</span>
+                      </p>);
+            })
+          }
+          </div>
+        )
+      }
+    });
+
+    var Question = React.createClass( {
+
+      getInitialState: function() {
+        return {
+          answered: false,
+          answer: null
+        };
+      },
+
+      go : function() {
+        this.setState( { answered : true } );
+        console.log( this.state.answered );
+      },
+
+      saveAnswer : function(event) {
+        this.setState( {answer: event.target.value } );
+      },
+
+      render: function() {
+        var s = {
+          display: this.state.answered ? 'none' : 'inline'
+        };
+          return (
+          <div>
+            <h1>{this.props.q.title}</h1>
+            <Choice choices={this.props.q.choices} answer={this.saveAnswer} answered={this.state.answered} />
+            <button onClick={this.go} style={s} >Ok, go</button>
+          </div>
+          );
+      }
+    });
+
+    _q = {};
+    _q.title = "Minne matka?";
+    _q.type = "multichoice";
+    _q.choices = [  { name : 'Ruotsiin', number : '20' , correct : false } , 
+                    { name : 'Saksaan', number : '10' , correct : false } ,
+                    { name : 'Brysseliin', number : '20' , correct : true }
+                 ];
+    _q.corrext = 'Brysseliin';
+
+    React.renderComponent(
+      <Question q={_q} />,
+      document.getElementById('example')
+    );
+    </script>
+  </body>
+</html>
