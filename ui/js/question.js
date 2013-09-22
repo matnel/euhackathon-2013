@@ -21,6 +21,7 @@ var _multichoice = function( data ) {
 		temp = temp.val();
 		$('input[name="multichoice"]').remove();
 		answer( data, temp );
+		$(this).remove();
 	});
 
 	return $('<div>').append( title ).append( choices ).append( respond );
