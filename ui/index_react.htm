@@ -106,14 +106,12 @@
 
       getInitialState: function() {
         return {
-          answered: false,
           answer: null
         };
       },
 
       go : function() {
-        this.setState( { answered : true } );
-        console.log( this.state.answered );
+        this.props.correct( this.props.q.correct == this.state.answer );
       },
 
       saveAnswer : function(event) {
@@ -122,14 +120,18 @@
 
       render: function() {
         var s = {
-          display: this.state.answered ? 'none' : 'inline'
+          display: this.props.answered ? 'none' : 'inline'
         };
+        var s2 = {
+          display: this.props.answered ? 'inline' : 'none'
+        }
           return (
           <div>
             <h1>{this.props.q.title}</h1>
             <Choice choices={this.props.q.choices} answer={this.saveAnswer} answered={this.props.answered} />
             <Slider max={30} min={2} answer={this.saveAnswer}/>
             <button onClick={this.go} style={s} >Ok, go</button>
+            <button onClick={this.props.next} style={s2}>Next</button>
           </div>
           );
       }
@@ -138,17 +140,26 @@
      var Status = React.createClass( {
       render: function() {
 
-        var imgs = "";
+        // purkka
+        var imgs = [];
         for( var i = 0; i < this.props.normals; i++ ) {
-          imgs += "sieni"
+          imgs.push('')
         }
 
         return (
           <div>
-            {imgs}
+            {
+              imgs.map( function(){
+                return(
+                  <img src='./images/sieni8.png' />
+                  );
+              })
+
+            }
             {
               this.props.labels.map( function(c){
-                return(<p>{c}</p>);
+                var src = './images/' + c;
+                return(<img src={src} />);
               } )
             }
           </div>
@@ -159,7 +170,7 @@
     var Avatar = React.createClass( {
       render: function() {
         return (
-          <div id="avatar" data-title="Hello" data-content={"hello world"}>
+          <div id="avatar" data-custom-title="Hello" data-custom-content={"hello world"}>
             Badger says: 
             {this.props.says} {this.props.number}
           </div>
@@ -178,7 +189,7 @@
                  ];
     _q.correct = 'Brysseliin';
 
-    k = ['spessusieni','spessusieni2'];
+    k = ['sieni1.png','sieni2.png'];
 
 
     var Main = React.createClass( {
