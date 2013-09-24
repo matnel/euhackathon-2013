@@ -23,7 +23,7 @@
 
       getInitialState: function() {
         return {
-          value : 0
+          value : this.props.min
         };
       },
 
@@ -31,13 +31,17 @@
         if( this.props.type != "slide" ) {
           return(<span></span>);
         }
-        var component = this;
+
+        var results = {
+          display: this.props.done? 'inline' : 'none'
+        };  
+
         return(<div>
           <div id = "tulos">
             {this.state.value}
           </div>
           <div id = "slideri"></div>
-          <div id = "plot-slide" style={numbers}>
+          <div id = "plot-slide" style={results}>
           </div>
           </div>
         )
@@ -145,7 +149,7 @@
             <h1>{this.props.q.title}</h1>
             <div class="questions-box">
             <Choice type={this.props.q.type} choices={this.props.q.choices} answer={this.saveAnswer} done={this.props.answered} />
-            <Slider type={this.props.q.type} max={30} min={2} answer={this.saveAnswer} />
+            <Slider type={this.props.q.type} max={this.props.q.max} min={this.props.q.min} answer={this.saveAnswer} />
             </div>
             <button class="btn btn-large btn-primary" onClick={this.go} style={s} >Ok, go</button>
             <button class="btn btn-large" onClick={this.props.next} style={s2}>Next</button>
@@ -217,6 +221,14 @@
                     { name : 'Brysseliin', number : '20' , correct : true }
                  ];
     _q.correct = 'Brysseliin';
+
+    _q = {};
+    _q.title = "Minne matka?";
+    _q.type = "slide";
+    _q.min = 5;
+    _q.max = 10;
+    _q.error = 3;
+    _q.correct = 10;
 
 
     var Main = React.createClass( {
