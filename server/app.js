@@ -7,8 +7,7 @@ app.use('/ui', express.static( __dirname + '/../ui'  ) );
 var redis = require('redis');
 var db = redis.createClient();
 
-db.set('answer-1', "[1,2,3]" )
-db.set('question-1', "[1,2,3]" )
+require('./fill.js').db_init( db );
 
 app.post('/response/:id', function(req, res){
 	var id = req.params.id;
@@ -34,7 +33,8 @@ app.get('/question/:id', function(req, res){
   } );
 });
 
-
+// [{alpha: "a", amount: 3}, {alpha: "b", amount: 10}, {alpha: "c", amount: 4}]
+// [[1, 30], [3, 29], [8, 5]]
 
 
 
