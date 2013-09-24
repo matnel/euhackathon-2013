@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
     <script src="./libs/bootstrap/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="./libs/bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="./style.css">
   </head>
   <body>
 
@@ -124,7 +126,7 @@
           display: this.props.answered ? 'inline' : 'none'
         }
           return (
-          <div>
+          <div class="col-lg-6">
             <h1>{this.props.q.title}</h1>
             <Choice choices={this.props.q.choices} answer={this.saveAnswer} answered={this.props.answered} />
             <Slider max={30} min={2} answer={this.saveAnswer}/>
@@ -145,7 +147,7 @@
         }
 
         return (
-          <div>
+          <div id="nurmikko">
             {
               imgs.map( function(){
                 return(
@@ -168,9 +170,8 @@
     var Avatar = React.createClass( {
       render: function() {
         return (
-          <div id="avatar" data-custom-title="Hello" data-custom-content={"hello world"}>
-            Badger says: 
-            {this.props.says} {this.props.number}
+          <div id="avatar" class="col-lg-6" data-custom-title="Hello" data-custom-content={"hello world"}>
+            <img src='./images/badger.png' />
           </div>
         );
       },
@@ -187,7 +188,7 @@
                  ];
     _q.correct = 'Brysseliin';
 
-    k = ['sieni1.png','sieni2.png'];
+    k = ['sieni1.png','sieni2.png', 'sieni3.png','sieni4.png', 'sieni5.png','sieni6.png', 'sieni7.png','sieni8.png', 'sieni9.png','sieni10.png'];
 
 
     var Main = React.createClass( {
@@ -224,9 +225,11 @@
       render: function() {
         return (
           <div>
-            <Question q={_q} correct={this.updateCorrect} next={this.next} answered={this.state.answered} />
+            <div class="row">
+              <Question q={_q} correct={this.updateCorrect} next={this.next} answered={this.state.answered} />
+              <Avatar says={this.state.say} number={this.state.correct} />
+            </div>
             <Status normals={this.state.correct} labels={k} />
-            <Avatar says={this.state.say} number={this.state.correct} />
           </div>
         );
       }
