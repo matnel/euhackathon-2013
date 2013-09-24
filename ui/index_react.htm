@@ -36,8 +36,7 @@
           <div id = "tulos">
             {this.state.value}
           </div>
-          <div id = "slideri">
-          </div>
+          <div id = "slideri"></div>
           <div id = "plot-slide" style={numbers}>
           </div>
           </div>
@@ -86,14 +85,10 @@
         if( this.props.type != "multichoice" ) {
           return(<span></span>);
         }
+
         var component = this;
 
-        var selectors = {
-          display: this.props.done ? 'none' : 'inline'
-        };
-
-
-        var numbers = {
+        var results = {
           display: this.props.done? 'inline' : 'none'
         };  
 
@@ -103,15 +98,16 @@
             this.props.choices.map(function(c) {
               style = {
                 'font-weight' : component.state.selected == c.name ? 'bold' : '',
-                color : component.props.answered && c.correct ? 'green' : ''
+                color : component.props.answered && c.correct ? 'green' : '',
+                display: component.props.done ? 'none' : 'inherit'
               }
               return  (<p class="ok" key={c.name} style={style}>{c.name}
-                        <input name="choice" type="radio" style={selectors} value={c.name} onChange={component.onSelect}></input>
-                        <span style={numbers}>{c.number}</span>
+                        <input name="choice" type="radio" s value={c.name} onChange={component.onSelect}></input>
+                        
                       </p>);
             })
           }
-          <div id="plot-choice" style={numbers}></div>
+          <div id="plot-choice" style={results}></div>
           </div>
         )
       }
