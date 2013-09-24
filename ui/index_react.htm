@@ -1,14 +1,55 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <script src="./libs/jquery.js"></script>
+    <script src="./libs/jquery.js"></script>
     <script src="./libs/react.js"></script>
     <script src="./libs/JSXTransformer.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
   </head>
   <body>
     <div id="example"></div>
     <script type="text/jsx">
     /** @jsx React.DOM */
+    var Slider = React.createClass( {
+
+      getInitialState: function() {
+        return {
+          value : 0
+        };
+      },
+
+
+      render : function() {
+        var component = this;
+        return(<div>
+          <div id = "tulos">
+            {this.state.value}
+          </div>
+          <div id = "slideri">
+          </div>
+          </div>
+        )
+      },
+
+      onSlide : function(event, ui) {
+        this.props.answer(ui.value);
+        this.setState({value : ui.value});
+
+      },
+
+      componentDidMount: function() {
+        $("#slideri").slider({
+            max: this.props.max,
+            min: this.props.min,
+            value: this.props.min,
+            slide: this.onSlide
+        });
+      }
+
+
+    });
+
     var Choice = React.createClass( {
 
       getInitialState: function() {
@@ -84,6 +125,7 @@
           <div>
             <h1>{this.props.q.title}</h1>
             <Choice choices={this.props.q.choices} answer={this.saveAnswer} answered={this.props.answered} />
+            <Slider max={30} min={2} answer={this.saveAnswer}/>
             <button onClick={this.go} style={s} >Ok, go</button>
             <button onClick={this.props.next} style={s2}>Next</button>
           </div>
@@ -93,8 +135,15 @@
 
     var Status = React.createClass( {
       render: function() {
+
+        var imgs = "";
+        for( var i = 0; i < this.props.normals; i++ ) {
+          imgs += "sieni"
+        }
+
         return (
           <div>
+            {imgs}
             {
               this.props.labels.map( function(c){
                 return(<p>{c}</p>);
@@ -124,7 +173,7 @@
                  ];
     _q.correct = 'Brysseliin';
 
-    k = ['sieni1','sieni2'];
+    k = ['spessusieni','spessusieni2'];
 
 
     var Main = React.createClass( {
@@ -157,7 +206,7 @@
         return (
           <div>
             <Question q={_q} correct={this.updateCorrect} next={this.next} answered={this.state.answered} />
-            <Status labels={k} />
+            <Status normals={this.state.correct} labels={k} />
             <Avatar says={this.state.say} number={this.state.correct} />
           </div>
         );
