@@ -25,6 +25,9 @@
       },
 
       render : function() {
+        if( this.props.type != "slide" ) {
+          return(<span></span>);
+        }
         var component = this;
         return(<div>
           <div id = "tulos">
@@ -63,20 +66,24 @@
       },
 
       onSelect : function(event) {
-        this.props.answer( event );
-        this.setState( { selected : event.target.value } );
+        value = event.target.value;
+        this.props.answer( value );
+        this.setState( { selected : value } );
       },
 
       render : function() {
+        if( this.props.type != "multichoice" ) {
+          return(<span></span>);
+        }
         var component = this;
 
         var selectors = {
-          display: this.props.answered ? 'none' : 'inline'
+          display: this.props.done ? 'none' : 'inline'
         };
 
 
         var numbers = {
-          display: this.props.answered ? 'inline' : 'none'
+          display: this.props.done? 'inline' : 'none'
         };  
 
         return(
@@ -85,11 +92,11 @@
             this.props.choices.map(function(c) {
               style = {
                 'font-weight' : component.state.selected == c.name ? 'bold' : '',
-                color : component.props.answered && c.correct ? 'green' : ''
+                color : component.props.done && c.correct ? 'green' : ''
               }
-              return  (<label class="btn btn-primary">
-                        <input name="choice" type="radio" value={c.name} onChange={component.onSelect}></input> {c.name}
-                      </label>);
+              return  (<p>
+                        <input name="choice" type="radio" value={c.name} onChange={component.onSelect}></input>{c.name}
+                      </p>);
             })
           }
           </div>
@@ -101,16 +108,19 @@
 
       getInitialState: function() {
         return {
-          answer: null
+          answer: null,
         };
       },
 
       go : function() {
+        console.log( this.props.q.correct );
+        console.log( this.state.answer );
         this.props.correct( this.props.q.correct == this.state.answer );
       },
 
-      saveAnswer : function(event) {
-        this.setState( {answer: event.target.value } );
+      saveAnswer : function(answer) {
+        console.log( "save " + answer );
+        this.setState( {answer: answer } );
       },
 
       render: function() {
@@ -123,8 +133,10 @@
           return (
           <div class="col-lg-6">
             <h1>{this.props.q.title}</h1>
-            <Choice choices={this.props.q.choices} answer={this.saveAnswer} answered={this.props.answered} />
-            <Slider max={30} min={2} answer={this.saveAnswer}/>
+            <div class="questions-box">
+            <Choice type={this.props.q.type} choices={this.props.q.choices} answer={this.saveAnswer} done={this.props.answered} />
+            <Slider type={this.props.q.type} max={30} min={2} answer={this.saveAnswer} />
+            </div>
             <button class="btn btn-large btn-primary" onClick={this.go} style={s} >Ok, go</button>
             <button class="btn btn-large" onClick={this.props.next} style={s2}>Next</button>
           </div>
@@ -146,7 +158,7 @@
             {
               imgs.map( function(){
                 return(
-                  <img class="s" src='./images/sieni8.png' />
+                  <img class="sieni" src='./images/sieni8.png' />
                   );
               })
 
@@ -206,6 +218,7 @@
         console.log( "foo" );
         this.setState( { answered: true });
         this.state.all++;
+        console.log( this.state.correct );
         if( correct ) {
           this.state.correct++;
           this.setState( { correct : this.state.correct } );
