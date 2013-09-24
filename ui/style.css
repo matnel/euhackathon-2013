@@ -3,3 +3,11 @@
 	background-position: 0px bottom;
 	background-repeat: repeat-x;
 }
+
+.sieni {
+	height: 75px;
+}
+
+.hide{
+	display: none;
+}

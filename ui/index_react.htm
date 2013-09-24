@@ -13,7 +13,7 @@
   </head>
   <body>
 
-    <div id="example"></div>
+    <div id="example" style="margin: 10px;"></div>
     <script type="text/jsx">
     /** @jsx React.DOM */
     var Slider = React.createClass( {
@@ -62,10 +62,6 @@
         };
       },
 
-      componentDidMount: function() {
-        $('.ok').css('color', 'pink');
-      },
-
       onSelect : function(event) {
         this.props.answer( event );
         this.setState( { selected : event.target.value } );
@@ -84,17 +80,16 @@
         };  
 
         return(
-          <div>
+          <div class="btn-group" data-toggle="buttons">
           {
             this.props.choices.map(function(c) {
               style = {
                 'font-weight' : component.state.selected == c.name ? 'bold' : '',
                 color : component.props.answered && c.correct ? 'green' : ''
               }
-              return  (<p class="ok" key={c.name} style={style}>{c.name}
-                        <input name="choice" type="radio" style={selectors} value={c.name} onChange={component.onSelect}></input>
-                        <span style={numbers}>{c.number}</span>
-                      </p>);
+              return  (<label class="btn btn-primary">
+                        <input name="choice" type="radio" value={c.name} onChange={component.onSelect}></input> {c.name}
+                      </label>);
             })
           }
           </div>
@@ -130,8 +125,8 @@
             <h1>{this.props.q.title}</h1>
             <Choice choices={this.props.q.choices} answer={this.saveAnswer} answered={this.props.answered} />
             <Slider max={30} min={2} answer={this.saveAnswer}/>
-            <button onClick={this.go} style={s} >Ok, go</button>
-            <button onClick={this.props.next} style={s2}>Next</button>
+            <button class="btn btn-large btn-primary" onClick={this.go} style={s} >Ok, go</button>
+            <button class="btn btn-large" onClick={this.props.next} style={s2}>Next</button>
           </div>
           );
       }
@@ -151,7 +146,7 @@
             {
               imgs.map( function(){
                 return(
-                  <img src='./images/sieni8.png' />
+                  <img class="s" src='./images/sieni8.png' />
                   );
               })
 
@@ -159,7 +154,7 @@
             {
               this.props.labels.map( function(c){
                 var src = './images/' + c;
-                return(<img src={src} />);
+                return(<img class="sieni" src={src} />);
               } )
             }
           </div>
@@ -170,13 +165,18 @@
     var Avatar = React.createClass( {
       render: function() {
         return (
-          <div id="avatar" class="col-lg-6" data-custom-title="Hello" data-custom-content={"hello world"}>
+          <div id="avatar" class="col-lg-6">
             <img src='./images/badger.png' />
+            <button id='button' class="hide"></button>
           </div>
         );
       },
 
-      componentDidUpdate: function() {}
+      componentDidUpdate: function() {
+        console.log("update");
+        $('#avatar').popover( { content : "Mushroom " + this.props.say } );
+        $('#avatar').click();
+      }
     });
 
     _q = {};
@@ -195,7 +195,7 @@
 
       getInitialState: function() {
         return {
-          say: 'Hello world',
+          say: '',
           correct : 0,
           all : 0,
           answered : false
@@ -227,7 +227,7 @@
           <div>
             <div class="row">
               <Question q={_q} correct={this.updateCorrect} next={this.next} answered={this.state.answered} />
-              <Avatar says={this.state.say} number={this.state.correct} />
+              <Avatar say={this.state.say} number={this.state.correct} />
             </div>
             <Status normals={this.state.correct} labels={k} />
           </div>
