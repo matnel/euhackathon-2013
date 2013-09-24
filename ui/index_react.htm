@@ -38,7 +38,7 @@
           </div>
           <div id = "slideri">
           </div>
-          <div id = "plot" style={numbers}>
+          <div id = "plot-slide" style={numbers}>
           </div>
           </div>
         )
@@ -58,7 +58,7 @@
             slide: this.onSlide
         });
 
-        lineChart([[1, 30], [3, 29], [8, 5]], "#plot");
+        lineChart([[1, 30], [3, 29], [8, 5]], "#plot-slide");
       }
 
 
@@ -79,7 +79,7 @@
       },
 
       componentDidMount : function(){
-         barPlot([{alpha: "a", amount: 3}, {alpha: "b", amount: 10}, {alpha: "c", amount: 4}], "#plot");
+         barPlot([{alpha: "a", amount: 3}, {alpha: "b", amount: 10}, {alpha: "c", amount: 4}], "#plot-choice");
       },
 
       render : function() {
@@ -111,8 +111,7 @@
                       </p>);
             })
           }
-          <div id = "plot" style={numbers}>
-          </div>
+          <div id="plot-choice" style={numbers}></div>
           </div>
         )
       }
