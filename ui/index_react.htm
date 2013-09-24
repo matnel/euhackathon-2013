@@ -132,7 +132,7 @@
       }
     });
 
-    var Status = React.createClass( {
+     var Status = React.createClass( {
       render: function() {
 
         var imgs = "";
@@ -153,7 +153,6 @@
       }
     } );
 
-
     var Avatar = React.createClass( {
       render: function() {
         return (
@@ -172,7 +171,6 @@
       }
     });
 
-
     _q = {};
     _q.title = "Minne matka?";
     _q.type = "multichoice";
@@ -180,13 +178,36 @@
                     { name : 'Saksaan', number : '10' , correct : false } ,
                     { name : 'Brysseliin', number : '20' , correct : true }
                  ];
-    _q.corrext = 'Brysseliin';
+    _q.correct = 'Brysseliin';
 
     k = ['spessusieni','spessusieni2'];
 
 
-
     var Main = React.createClass( {
+
+      getInitialState: function() {
+        return {
+          say: 'Hello world',
+          correct : 0,
+          all : 0,
+          answered : false
+        };
+      },
+
+      updateCorrect: function(correct) {
+        console.log( "foo" );
+        this.setState( { answered: true });
+        this.state.all++;
+        if( correct ) {
+          this.state.correct++;
+          this.setState( { correct : this.state.correct } );
+        }
+      },
+
+      next: function() {
+        console.log("next");
+        this.setState( { answered: false });
+      },
 
       render: function() {
         return (
