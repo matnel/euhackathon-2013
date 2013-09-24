@@ -150,12 +150,19 @@
 
         // purkka
         var imgs = [];
-        for( var i = 0; i < this.props.normals; i++ ) {
+        for( var i = 0; i < this.props.flow; i++ ) {
           imgs.push('')
+        }
+
+        // todo: add different states
+        var kori = "./images/kori" + this.props.normals + ".png";
+        if( this.props.normals > 4) {
+          kori = "./images/kori4.png";
         }
 
         return (
           <div id="nurmikko">
+            <img src={kori} class="sieni" />
             {
               imgs.map( function(){
                 return(
@@ -183,7 +190,7 @@
           padding: '5px'
         }
       console.log( this.props.was_correct );
-        var badger = this.props.was_correct ? './images/badger2.png' : './images/badger.png' ;
+        var badger = this.props.was_correct ? './images/badger2.png' : './images/badger1.png' ;
         return (
           <div id="avatar" class="col-lg-6">
             <img src={badger} />
@@ -202,8 +209,6 @@
                  ];
     _q.correct = 'Brysseliin';
 
-    k = ['sieni1.png','sieni2.png', 'sieni3.png','sieni4.png', 'sieni5.png','sieni6.png', 'sieni7.png','sieni8.png', 'sieni9.png','sieni10.png'];
-
 
     var Main = React.createClass( {
 
@@ -213,22 +218,23 @@
           correct : 0,
           all : 0,
           answered : false,
-          was_correct : false
+          was_correct : false,
+          flow : 0,
+          awards : ['sieni2.png']
         };
       },
 
       updateCorrect: function(correct) {
-        console.log( "foo" );
         this.setState( { answered: true });
         this.state.all++;
-        console.log( this.state.correct );
         if( correct ) {
           this.state.correct++;
-          this.setState( { correct : this.state.correct, say : '', was_correct : true } );
+          this.state.flow++;
+          this.setState( { correct : this.state.correct, say : '', was_correct : true, flow : this.state.flow } );
         } else {
           if( this.state.correct > 0 ) {
             this.state.correct--;
-            this.setState( { correct : this.state.correct, say : "It's a snake, it's a snake..."} );
+            this.setState( { correct : this.state.correct, say : "It's a snake, it's a snake...", flow : 0} );
           }
         }
       },
@@ -245,7 +251,7 @@
               <Question q={_q} correct={this.updateCorrect} next={this.next} answered={this.state.answered} />
               <Avatar was_correct={this.state.was_correct}  say={this.state.say} number={this.state.correct} />
             </div>
-            <Status normals={this.state.correct} labels={k} />
+            <Status normals={this.state.correct} flow={this.state.flow} labels={this.state.awards} />
           </div>
         );
       }
