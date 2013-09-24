@@ -50,7 +50,8 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.tsv("data3.tsv", type, function(error, data) {
+//d3.tsv("data3.tsv", type, function(error, data) {
+  data = [{alpha: "a", amount: 3}, {alpha: "b", amount: 10}]
   x.domain(data.map(function(d) { return d.alpha; }));
   y.domain([0, d3.max(data, function(d) { return d.amount; })]);
 
@@ -83,7 +84,7 @@ svg.selectAll(".bar")
         .data(data)                      // <== This line
         .style("fill", function(d, i){return d.alpha == "b"?"red":"limegreen";});     
 
-});
+//});
 
 function type(d) {
   d.amount = +d.amount;
