@@ -6,6 +6,8 @@
     <script src="./libs/JSXTransformer.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+    <script src="./libs/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./libs/bootstrap/css/bootstrap.min.css">
   </head>
   <body>
     <div id="example"></div>
@@ -18,7 +20,6 @@
           value : 0
         };
       },
-
 
       render : function() {
         var component = this;
@@ -158,9 +159,14 @@
       render: function() {
         return (
           <div>
-            Badger says: {this.props.says} {this.props.number}
+            Badger says: 
+            {this.props.says} {this.props.number}
           </div>
         );
+      },
+
+      componentDidUpdate: function() {
+
       }
     });
 
