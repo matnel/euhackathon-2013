@@ -61,14 +61,12 @@
 
       getInitialState: function() {
         return {
-          answered: false,
           answer: null
         };
       },
 
       go : function() {
-        this.setState( { answered : true } );
-        console.log( this.state.answered );
+        this.props.correct( this.props.q.correct == this.state.answer );
       },
 
       saveAnswer : function(event) {
@@ -77,13 +75,17 @@
 
       render: function() {
         var s = {
-          display: this.state.answered ? 'none' : 'inline'
+          display: this.props.answered ? 'none' : 'inline'
         };
+        var s2 = {
+          display: this.props.answered ? 'inline' : 'none'
+        }
           return (
           <div>
             <h1>{this.props.q.title}</h1>
-            <Choice choices={this.props.q.choices} answer={this.saveAnswer} answered={this.state.answered} />
+            <Choice choices={this.props.q.choices} answer={this.saveAnswer} answered={this.props.answered} />
             <button onClick={this.go} style={s} >Ok, go</button>
+            <button onClick={this.props.next} style={s2}>Next</button>
           </div>
           );
       }
@@ -103,6 +105,16 @@
       }
     } );
 
+    var Avatar = React.createClass( {
+      render: function() {
+        return (
+          <div>
+            Badger says: {this.props.says} {this.props.number}
+          </div>
+        );
+      }
+    });
+
     _q = {};
     _q.title = "Minne matka?";
     _q.type = "multichoice";
@@ -110,18 +122,43 @@
                     { name : 'Saksaan', number : '10' , correct : false } ,
                     { name : 'Brysseliin', number : '20' , correct : true }
                  ];
-    _q.corrext = 'Brysseliin';
+    _q.correct = 'Brysseliin';
 
-    k = ['sieni1','sieni2']
+    k = ['sieni1','sieni2'];
 
 
     var Main = React.createClass( {
 
+      getInitialState: function() {
+        return {
+          say: 'Hello world',
+          correct : 0,
+          all : 0,
+          answered : false
+        };
+      },
+
+      updateCorrect: function(correct) {
+        console.log( "foo" );
+        this.setState( { answered: true });
+        this.state.all++;
+        if( correct ) {
+          this.state.correct++;
+          this.setState( { correct : this.state.correct } );
+        }
+      },
+
+      next: function() {
+        console.log("next");
+        this.setState( { answered: false });
+      },
+
       render: function() {
         return (
           <div>
-            <Question q={_q} />
+            <Question q={_q} correct={this.updateCorrect} next={this.next} answered={this.state.answered} />
             <Status labels={k} />
+            <Avatar says={this.state.say} number={this.state.correct} />
           </div>
         );
       }
