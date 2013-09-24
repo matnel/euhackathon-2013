@@ -182,9 +182,11 @@
           border: '1px solid red',
           padding: '5px'
         }
+      console.log( this.props.was_correct );
+        var badger = this.props.was_correct ? './images/badger2.png' : './images/badger.png' ;
         return (
           <div id="avatar" class="col-lg-6">
-            <img src='./images/badger.png' />
+            <img src={badger} />
             <span style={say}>{this.props.say}</span>       
           </div>
         );
@@ -210,7 +212,8 @@
           say: '',
           correct : 0,
           all : 0,
-          answered : false
+          answered : false,
+          was_correct : false
         };
       },
 
@@ -221,7 +224,7 @@
         console.log( this.state.correct );
         if( correct ) {
           this.state.correct++;
-          this.setState( { correct : this.state.correct, say : '' } );
+          this.setState( { correct : this.state.correct, say : '', was_correct : true } );
         } else {
           if( this.state.correct > 0 ) {
             this.state.correct--;
@@ -232,7 +235,7 @@
 
       next: function() {
         console.log("next");
-        this.setState( { answered: false } );
+        this.setState( { answered: false, was_correct : false } );
       },
 
       render: function() {
@@ -240,7 +243,7 @@
           <div>
             <div class="row">
               <Question q={_q} correct={this.updateCorrect} next={this.next} answered={this.state.answered} />
-              <Avatar say={this.state.say} number={this.state.correct} />
+              <Avatar was_correct={this.state.was_correct}  say={this.state.say} number={this.state.correct} />
             </div>
             <Status normals={this.state.correct} labels={k} />
           </div>
