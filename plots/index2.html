@@ -15,8 +15,7 @@ body {
 
 .bar {
   fill: limegreen;
-}
-
+} 
 .x.axis path {
   display: none;
 }
@@ -78,6 +77,11 @@ d3.tsv("data3.tsv", type, function(error, data) {
       .attr("width", x.rangeBand())
       .attr("y", function(d) { return y(d.amount); })
       .attr("height", function(d) { return height - y(d.amount); });
+      
+
+svg.selectAll(".bar")    
+        .data(data)                      // <== This line
+        .style("fill", function(d, i){return d.alpha == "b"?"red":"limegreen";});     
 
 });
 
