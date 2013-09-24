@@ -57,7 +57,7 @@
             slide: this.onSlide
         });
 
-        lineChart([[1, 30], [3, 29], [8, 5]], "#plot-slide");
+        lineChart([[1, 30], [3, 29], [8, 5]], "#plot-slide", correct);
       }
 
 
@@ -78,7 +78,7 @@
       },
 
       componentDidMount : function(){
-         barPlot([{alpha: "a", amount: 3}, {alpha: "b", amount: 10}, {alpha: "c", amount: 4}], "#plot-choice");
+         barPlot([{alpha: "a", amount: 3}, {alpha: "b", amount: 10}, {alpha: "c", amount: 4}], "#plot-choice", correct);
       },
 
       render : function() {
@@ -144,8 +144,8 @@
           <div class="col-lg-6">
             <h1>{this.props.q.title}</h1>
             <div class="questions-box">
-            <Choice type={this.props.q.type} choices={this.props.q.choices} answer={this.saveAnswer} done={this.props.answered} />
-            <Slider type={this.props.q.type} max={30} min={2} answer={this.saveAnswer} />
+            <Choice type={this.props.q.type} choices={this.props.q.choices} answer={this.saveAnswer} correct={this.props.q.correct} done={this.props.answered} />
+            <Slider type={this.props.q.type} max={30} min={2} answer={this.saveAnswer} correct={this.props.q.correct}/>
             </div>
             <button class="btn btn-large btn-primary" onClick={this.go} style={s} >Ok, go</button>
             <button class="btn btn-large" onClick={this.props.next} style={s2}>Next</button>
