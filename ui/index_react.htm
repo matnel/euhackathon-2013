@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-
+  <script src="./libs/jquery.js"></script>
     <script src="./libs/react.js"></script>
     <script src="./libs/JSXTransformer.js"></script>
   </head>
@@ -15,6 +15,10 @@
         return {
           selected : ''
         };
+      },
+
+      componentDidMount: function() {
+        $('.ok').css('color', 'pink');
       },
 
       onSelect : function(event) {
@@ -42,7 +46,7 @@
                 'font-weight' : component.state.selected == c.name ? 'bold' : '',
                 color : component.props.answered && c.correct ? 'green' : ''
               }
-              return  (<p key={c.name} style={style}>{c.name}
+              return  (<p class="ok" key={c.name} style={style}>{c.name}
                         <input name="choice" type="radio" style={selectors} value={c.name} onChange={component.onSelect}></input>
                         <span style={numbers}>{c.number}</span>
                       </p>);
@@ -85,6 +89,20 @@
       }
     });
 
+    var Status = React.createClass( {
+      render: function() {
+        return (
+          <div>
+            {
+              this.props.labels.map( function(c){
+                return(<p>{c}</p>);
+              } )
+            }
+          </div>
+        );
+      }
+    } );
+
     _q = {};
     _q.title = "Minne matka?";
     _q.type = "multichoice";
@@ -94,8 +112,24 @@
                  ];
     _q.corrext = 'Brysseliin';
 
+    k = ['sieni1','sieni2']
+
+
+    var Main = React.createClass( {
+
+      render: function() {
+        return (
+          <div>
+            <Question q={_q} />
+            <Status labels={k} />
+          </div>
+        );
+      }
+
+    } );
+
     React.renderComponent(
-      <Question q={_q} />,
+      <Main />,
       document.getElementById('example')
     );
     </script>
