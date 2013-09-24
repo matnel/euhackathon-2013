@@ -157,7 +157,7 @@
         // todo: add different states
         var kori = "./images/kori" + this.props.normals + ".png";
         if( this.props.normals > 4) {
-          kori = "./images/kori4.png";
+          kori = "./images/kori5.png";
         }
 
         return (
@@ -220,23 +220,47 @@
           answered : false,
           was_correct : false,
           flow : 0,
-          awards : ['sieni2.png']
+          awards : []
         };
       },
 
-      updateCorrect: function(correct) {
+      updateCorrect: function(ok) {
         this.setState( { answered: true });
         this.state.all++;
-        if( correct ) {
-          this.state.correct++;
-          this.state.flow++;
-          this.setState( { correct : this.state.correct, say : '', was_correct : true, flow : this.state.flow } );
-        } else {
-          if( this.state.correct > 0 ) {
-            this.state.correct--;
-            this.setState( { correct : this.state.correct, say : "It's a snake, it's a snake...", flow : 0} );
+
+        var correct = this.state.correct;
+        var flow = this.state.flow;
+        var say = "";
+        var awards = this.state.awards;
+        var was_correct = false;
+
+        if( ok ) {
+
+
+          correct++;
+          flow++;
+          was_correct = true;
+          
+          if( correct == 3 ) {
+            awards.push('sieni7.png');
+            say = "Achievent unlocked! 3 correct.";
+            flow--;
           }
+
+          if( correct == 5 ) {
+            awards.push('sieni10.png');
+            say = "Achievent unlocked! 5 correct.";
+            flow--;
+          }
+          
+        } else {
+          flow = 0;
+          say = "It's a snake, it's a snake...";
         }
+
+        if( flow < 0 ) flow = 0;
+
+        this.setState( { awards : awards, say: say, correct: correct, flow: flow, was_correct : was_correct } );
       },
 
       next: function() {
