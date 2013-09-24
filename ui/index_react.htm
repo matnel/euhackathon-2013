@@ -158,7 +158,7 @@
     var Avatar = React.createClass( {
       render: function() {
         return (
-          <div>
+          <div id="avatar">
             Badger says: 
             {this.props.says} {this.props.number}
           </div>
@@ -166,7 +166,10 @@
       },
 
       componentDidUpdate: function() {
-
+        $('#avatar').popover( {
+          content : this.props.says,
+          title : 'Badger says'
+        } );
       }
     });
 
