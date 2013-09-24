@@ -208,6 +208,11 @@
         if( correct ) {
           this.state.correct++;
           this.setState( { correct : this.state.correct } );
+        } else {
+          if( this.state.correct > 0 ) {
+            this.state.correct--;
+            this.setState( { correct : this.state.correct, say : "It's a snake, it's a snake..."} );
+          }
         }
       },
 
