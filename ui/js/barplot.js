@@ -1,6 +1,6 @@
 
 
-function barPlot(data, container){
+function barPlot(data, container, answer){
 console.log("moi");
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = 500 - margin.left - margin.right,
@@ -59,7 +59,7 @@ var svg = d3.select( container ).append("svg")
 
 svg.selectAll(".bar")    
         .data(data)                      // <== This line
-        .style("fill", function(d, i){return d.alpha == "b"?"red":"limegreen";});     
+        .style("fill", function(d, i){return d.alpha == answer?"red":"limegreen";});     
 
 //});
 

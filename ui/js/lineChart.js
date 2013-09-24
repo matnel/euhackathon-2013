@@ -1,5 +1,5 @@
 
-function lineChart(data, div){
+function lineChart(data, div, answer){
 
 var margin = {top: 20, right: 20, bottom: 30, left: 50},
     width = 960 - margin.left - margin.right,
@@ -65,7 +65,7 @@ var svg = d3.select(div).append("svg")
   svg.selectAll("dot")		
         .data(data)										
     .enter().append("circle")								
-    .filter(function(d) { return d.int1 == 4 })    // <== This line
+    .filter(function(d) { return d.int1 == answer })    // <== This line
         .style("fill", "red")                        // <== and this one
         .attr("r", 3.5)										
         .attr("cx", function(d) { return x(d.int1); })		 

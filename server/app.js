@@ -27,6 +27,7 @@ app.get('/question/:id', function(req, res){
 	var id = req.params.id;
 	db.get('question-' + id, function(err, reply) {
   		reply = JSON.parse( reply );
+  		reply.id = id;
 
   		res.setHeader('Content-Type', 'text/json');
   		res.end( JSON.stringify( reply ) );
