@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="./libs/bootstrap/css/bootstrap.min.css">
   </head>
   <body>
+
+<a href="#" class="btn btn-lg btn-danger" data-toggle="popover" title="" data-content="And here's some amazing content. It's very engaging. right?" data-original-title="A Title">Click to toggle popover</a>
+
     <div id="example"></div>
     <script type="text/jsx">
     /** @jsx React.DOM */
@@ -156,19 +159,14 @@
     var Avatar = React.createClass( {
       render: function() {
         return (
-          <div id="avatar">
+          <div id="avatar" data-title="Hello" data-content={"hello world"}>
             Badger says: 
             {this.props.says} {this.props.number}
           </div>
         );
       },
 
-      componentDidUpdate: function() {
-        $('#avatar').popover( {
-          content : this.props.says,
-          title : 'Badger says'
-        } );
-      }
+      componentDidUpdate: function() {}
     });
 
     _q = {};
