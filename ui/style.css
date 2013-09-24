@@ -2,10 +2,11 @@
 	background-image: url('./images/nurmikko.png');
 	background-position: 0px bottom;
 	background-repeat: repeat-x;
+	height: 150px;
 }
 
 .sieni {
-	height: 75px;
+	height: 150px;
 }
 
 .hide{
