@@ -57,7 +57,7 @@
             slide: this.onSlide
         });
 
-        lineChart([[1, 30], [3, 29], [8, 5]], "#plot-slide", correct);
+        lineChart([[1, 30], [3, 29], [8, 5]], "#plot-slide", this.props.correct);
       }
 
 
@@ -78,7 +78,7 @@
       },
 
       componentDidMount : function(){
-         barPlot([{alpha: "a", amount: 3}, {alpha: "b", amount: 10}, {alpha: "c", amount: 4}], "#plot-choice", correct);
+         barPlot([{alpha: "a", amount: 3}, {alpha: "b", amount: 10}, {alpha: "c", amount: 4}], "#plot-choice", this.props.correct);
       },
 
       render : function() {
