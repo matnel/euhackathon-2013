@@ -87,15 +87,16 @@
         };  
 
         return(
-          <div class="btn-group" data-toggle="buttons">
+          <div>
           {
             this.props.choices.map(function(c) {
               style = {
                 'font-weight' : component.state.selected == c.name ? 'bold' : '',
-                color : component.props.done && c.correct ? 'green' : ''
+                color : component.props.answered && c.correct ? 'green' : ''
               }
-              return  (<p>
-                        <input name="choice" type="radio" value={c.name} onChange={component.onSelect}></input>{c.name}
+              return  (<p class="ok" key={c.name} style={style}>{c.name}
+                        <input name="choice" type="radio" style={selectors} value={c.name} onChange={component.onSelect}></input>
+                        <span style={numbers}>{c.number}</span>
                       </p>);
             })
           }
@@ -176,18 +177,17 @@
 
     var Avatar = React.createClass( {
       render: function() {
+        var say = {
+          display : this.props.say != "" ? 'inline' : 'none',
+          border: '1px solid red',
+          padding: '5px'
+        }
         return (
           <div id="avatar" class="col-lg-6">
             <img src='./images/badger.png' />
-            <button id='button' class="hide"></button>
+            <span style={say}>{this.props.say}</span>       
           </div>
         );
-      },
-
-      componentDidUpdate: function() {
-        console.log("update");
-        $('#avatar').popover( { content : "Mushroom " + this.props.say } );
-        $('#avatar').click();
       }
     });
 
@@ -221,7 +221,7 @@
         console.log( this.state.correct );
         if( correct ) {
           this.state.correct++;
-          this.setState( { correct : this.state.correct } );
+          this.setState( { correct : this.state.correct, say : '' } );
         } else {
           if( this.state.correct > 0 ) {
             this.state.correct--;
@@ -232,7 +232,7 @@
 
       next: function() {
         console.log("next");
-        this.setState( { answered: false });
+        this.setState( { answered: false } );
       },
 
       render: function() {
