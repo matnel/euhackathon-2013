@@ -159,7 +159,11 @@
         var s2 = {
           display: this.props.answered ? 'inline' : 'none'
         }
+
+                  	var kuvaaja = "./plots/plot" + questionid + ".png";
           return (
+
+
           <div class="col-lg-6">
             <h1>{this.props.q.title}</h1>
             <div class="questions-box">
@@ -168,6 +172,7 @@
             </div>
             <button class="btn btn-large btn-primary" onClick={this.go} style={s} >Ok, go</button>
             <button class="btn btn-large" onClick={this.props.next} style={s2}>Next</button>
+            <img src = {kuvaaja} style = {s2} />
           </div>
           );
       }
@@ -343,7 +348,7 @@
         return (
           <div>
             <div class="row">
-              <Question q={this.state.question} correct={this.updateCorrect} next={this.next} answered={this.state.answered} />
+              <Question q={this.state.question} correct={this.updateCorrect} next={this.next} answered={this.state.answered} questionid = {this.state.question_id} />
               <Avatar was_correct={this.state.was_correct}  say={this.state.say} number={this.state.correct} />
             </div>
             <Status normals={this.state.correct} flow={this.state.flow} labels={this.state.awards} />
