@@ -200,7 +200,7 @@
           'font-size': '20px',
           position: 'relative',
           top: '50px',
-          left: '-60px'
+          left: '-55px'
         }
 
         return (
@@ -231,7 +231,6 @@
       render: function() {
         var say = {
           display : this.props.say != "" ? 'inline' : 'none',
-          border: '1px solid red',
           padding: '5px'
         }
 
@@ -262,10 +261,10 @@
         } );
 
         return {
-          say: '',
-          correct : 0,
+          say: "It's a snake, it's a snake...",
+          correct : 3,
           all : 0,
-          answered : false,
+          answered : true,
           was_correct : false,
           flow : 0,
           awards : [],
