@@ -260,9 +260,7 @@
         var component = this;
 
         $.get('/question/1', function(res) {
-          console.log('got stuff');
           component.setState( { question : res });
-          console.log( res.type );
         } );
 
         return {
@@ -274,7 +272,7 @@
           flow : 0,
           awards : [],
           question : { type : 'slide'},  // hack, fixme
-          next_question : 2
+          question_id : 2
         };
       },
 
@@ -318,15 +316,15 @@
         if( flow < 0 ) flow = 0;
 
         this.setState( { awards : awards, say: say, correct: correct, flow: flow, was_correct : was_correct } );
-
-
-
       },
 
       next: function() {
         var component = this;
-        $.get('/question/' + this.state.next_question , function(res) {
-          component.setState( { question : res, next_question: component.state.next_question++, answered: false, was_correct : false  });
+        $.get('/question/' + this.state.question_id , function(res) {
+          var next = component.state.question_id + 1;
+          console.log( "Next " + next );
+          component.setState( { question : res, question_id: next, answered: false, was_correct : false  });
+
         } );
       },
 
