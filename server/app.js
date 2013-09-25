@@ -7,8 +7,8 @@ app.use('/ui', express.static( __dirname + '/../ui'  ) );
 var redis = require('redis');
 var db = redis.createClient();
 
-require('./fill.js').db_init( db );
 require('./fill.js').clean( db );
+require('./fill.js').db_init( db );
 
 app.post('/response/:id', function(req, res){
 	var id = req.params.id;
@@ -19,12 +19,9 @@ app.post('/response/:id', function(req, res){
   		var answer = req.body.answer;
 
   		if( ! (answer in data) ) {
-  			console.log("set zero");
   			data[ answer ] = 0;
   		}
   		data[ answer ]++;
-
-  		console.log( data );
 
   		var reply = [];
   		for( var a in data ) {
