@@ -20,15 +20,15 @@ var yAxis = d3.svg.axis()
     .orient("left");
 
 var line = d3.svg.line()
-    .x(function(d) { return x(d.int1); })
-    .y(function(d) { return y(d.int2); });
+    .x(function(d) { return x(d.answer); })
+    .y(function(d) { return y(d.amount); });
 
 var svg = d3.select(div).append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
+/*
   data.forEach(function(d) {
     d.int1 = d[0];
     d.int2 = d[1];
@@ -36,6 +36,11 @@ var svg = d3.select(div).append("svg")
 
   x.domain(d3.extent(data, function(d) { return d.int1; }));
   y.domain(d3.extent(data, function(d) { return d.int2; }));
+*/
+
+x.domain(data.map(function(d) { return d.answer; }));
+  y.domain([0, d3.max(data, function(d) { return d.amount; })]);
+  //lineChart([{answer:1, amount:30}, {answer:3, amount:29}, {answer:8, amount:5}}, "#plot-slide", this.props.correct);
 
   svg.append("g")
       .attr("class", "x axis")
@@ -68,8 +73,8 @@ var svg = d3.select(div).append("svg")
     .filter(function(d) { return d.int1 == answer })    // <== This line
         .style("fill", "red")                        // <== and this one
         .attr("r", 3.5)										
-        .attr("cx", function(d) { return x(d.int1); })		 
-        .attr("cy", function(d) { return y(d.int2); });
+        .attr("cx", function(d) { return x(d.answer); })		 
+        .attr("cy", function(d) { return y(d.amount); });
 // });
 
 return svg;
