@@ -12,16 +12,33 @@ require('./fill.js').clean( db );
 
 app.post('/response/:id', function(req, res){
 	var id = req.params.id;
-	db.get('answer-' + id, function(err, reply) {
-		console.log( reply );
-  		reply = JSON.parse( reply );
+	db.get('answer-' + id, function(err, data) {
+		console.log( data );
+  		data = JSON.parse( data );
+
+  		var answer = req.body.answer;
+
+  		if( ! (answer in data) ) {
+  			console.log("set zero");
+  			data[ answer ] = 0;
+  		}
+  		data[ answer ]++;
+
+  		console.log( data );
+
+  		var reply = [];
+  		for( var a in data ) {
+  			reply.push( {
+  				'answer' : a,
+  				'amount' : data[a]
+  			} );
+  		}
 
   		res.setHeader('Content-Type', 'text/json');
   		res.end( JSON.stringify( reply ) );
-  		reply.push( req.body.answer );
 
-  		reply = JSON.stringify( reply );
-  		db.set('answer-' + id, reply);
+  		data = JSON.stringify( data );
+  		db.set('answer-' + id, data);
   } );
 });
 

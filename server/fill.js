@@ -34,6 +34,6 @@ exports.db_init = function( db ) {
 
 exports.clean = function(db) {
     for( var i = 1; i < 3; i++ ) {
-        db.set('answer-1', "[]");
+        db.set('answer-1', "{}");
     }
 }
