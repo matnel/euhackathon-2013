@@ -7,12 +7,13 @@ app.use('/ui', express.static( __dirname + '/../ui'  ) );
 var redis = require('redis');
 var db = redis.createClient();
 
-db.set('answer-1', "[1,2,3]" )
-db.set('question-1', "[1,2,3]" )
+require('./fill.js').db_init( db );
+require('./fill.js').clean( db );
 
 app.post('/response/:id', function(req, res){
 	var id = req.params.id;
 	db.get('answer-' + id, function(err, reply) {
+		console.log( reply );
   		reply = JSON.parse( reply );
 
   		res.setHeader('Content-Type', 'text/json');
@@ -28,13 +29,15 @@ app.get('/question/:id', function(req, res){
 	var id = req.params.id;
 	db.get('question-' + id, function(err, reply) {
   		reply = JSON.parse( reply );
+  		reply.id = id;
 
   		res.setHeader('Content-Type', 'text/json');
   		res.end( JSON.stringify( reply ) );
   } );
 });
 
-
+// [{alpha: "a", amount: 3}, {alpha: "b", amount: 10}, {alpha: "c", amount: 4}]
+// [[1, 30], [3, 29], [8, 5]]
 
 
 

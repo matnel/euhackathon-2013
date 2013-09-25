@@ -36,13 +36,14 @@
           display: this.props.done? 'inline' : 'none'
         };  
 
+        var answer = {
+          display: this.props.done? 'none' : 'inherit'
+        };
+
         return(<div>
-          <div id = "tulos">
-            {this.state.value}
-          </div>
-          <div id = "slideri"></div>
-          <div id = "plot-slide" style={results}>
-          </div>
+            <div id="tulos" style={answer}>{this.state.value}</div>
+            <div id = "slideri" style={answer}></div>
+            <div id = "plot-slide" style={results}></div>
           </div>
         )
       },
@@ -61,6 +62,7 @@
             slide: this.onSlide
         });
 
+        $('#plot-slide').html('');
         lineChart([[1, 30], [3, 29], [8, 5]], "#plot-slide", this.props.correct);
       }
 
@@ -81,7 +83,8 @@
         this.setState( { selected : value } );
       },
 
-      componentDidMount : function(){
+      componentDidUpdate : function(){
+        $('#plot-choice').html('');
          barPlot([{alpha: "a", amount: 3}, {alpha: "b", amount: 10}, {alpha: "c", amount: 4}], "#plot-choice", this.props.correct);
       },
 
@@ -93,7 +96,7 @@
         var component = this;
 
         var results = {
-          display: this.props.done? 'inline' : 'none'
+          display: this.props.done? 'inherit' : 'none'
         };  
 
         return(
@@ -126,10 +129,11 @@
       },
 
       go : function() {
-        console.log( this.props.q.correct );
-        console.log( this.state.answer );
-        this.props.correct( this.props.q.correct == this.state.answer );
-        
+        var component = this;
+        $.post('/response/' + this.props.q.id , { answer : this.state.answer }, function(response) {
+          console.log( response );
+          component.props.correct( component.props.q.correct == component.state.answer );
+        } );
       },
 
       saveAnswer : function(answer) {
@@ -148,13 +152,8 @@
           <div class="col-lg-6">
             <h1>{this.props.q.title}</h1>
             <div class="questions-box">
-<<<<<<< HEAD
             <Choice type={this.props.q.type} choices={this.props.q.choices} answer={this.saveAnswer} done={this.props.answered} />
-            <Slider type={this.props.q.type} max={this.props.q.max} min={this.props.q.min} answer={this.saveAnswer} />
-=======
-            <Choice type={this.props.q.type} choices={this.props.q.choices} answer={this.saveAnswer} correct={this.props.q.correct} done={this.props.answered} />
-            <Slider type={this.props.q.type} max={30} min={2} answer={this.saveAnswer} correct={this.props.q.correct}/>
->>>>>>> 003fec3e5aad1f998f83929498637abf88309c03
+            <Slider type={this.props.q.type} max={this.props.q.max} min={this.props.q.min} answer={this.saveAnswer} done={this.props.answered} />
             </div>
             <button class="btn btn-large btn-primary" onClick={this.go} style={s} >Ok, go</button>
             <button class="btn btn-large" onClick={this.props.next} style={s2}>Next</button>
@@ -201,12 +200,14 @@
     } );
 
     var Avatar = React.createClass( {
+
       render: function() {
         var say = {
           display : this.props.say != "" ? 'inline' : 'none',
           border: '1px solid red',
           padding: '5px'
         }
+
       console.log( this.props.was_correct );
         var badger = this.props.was_correct ? './images/badger2.png' : './images/badger1.png' ;
         return (
@@ -218,27 +219,35 @@
       }
     });
 
-    _q = {};
-    _q.title = "Minne matka?";
-    _q.type = "multichoice";
-    _q.choices = [  { name : 'Ruotsiin', number : '20' , correct : false } , 
-                    { name : 'Saksaan', number : '10' , correct : false } ,
-                    { name : 'Brysseliin', number : '20' , correct : true }
-                 ];
-    _q.correct = 'Brysseliin';
+    // _q = {};
+    // _q.title = "Minne matka?";
+    // _q.type = "multichoice";
+    // _q.choices = [  { name : 'Ruotsiin', number : '20' , correct : false } , 
+    //                 { name : 'Saksaan', number : '10' , correct : false } ,
+    //                 { name : 'Brysseliin', number : '20' , correct : true }
+    //              ];
+    // _q.correct = 'Brysseliin';
 
-    _q = {};
-    _q.title = "Minne matka?";
-    _q.type = "slide";
-    _q.min = 5;
-    _q.max = 10;
-    _q.error = 3;
-    _q.correct = 10;
+    // _q = {};
+    // _q.title = "Minne matka?";
+    // _q.type = "slide";
+    // _q.min = 5;
+    // _q.max = 10;
+    // _q.error = 3;
+    // _q.correct = 10;
 
 
     var Main = React.createClass( {
 
       getInitialState: function() {
+        var component = this;
+
+        $.get('/question/1', function(res) {
+          console.log('got stuff');
+          component.setState( { question : res });
+          console.log( res.type );
+        } );
+
         return {
           say: '',
           correct : 0,
@@ -246,12 +255,14 @@
           answered : false,
           was_correct : false,
           flow : 0,
-          awards : []
+          awards : [],
+          question : { type : 'slide'},  // hack, fixme
+          next_question : 2
         };
       },
 
       updateCorrect: function(ok) {
-        this.setState( { answered: true });
+        this.setState( { answered: true } );
         this.state.all++;
 
         var correct = this.state.correct;
@@ -287,18 +298,23 @@
         if( flow < 0 ) flow = 0;
 
         this.setState( { awards : awards, say: say, correct: correct, flow: flow, was_correct : was_correct } );
+
+
+
       },
 
       next: function() {
-        console.log("next");
-        this.setState( { answered: false, was_correct : false } );
+        var component = this;
+        $.get('/question/' + this.state.next_question , function(res) {
+          component.setState( { question : res, next_question: component.state.next_question++, answered: false, was_correct : false  });
+        } );
       },
 
       render: function() {
         return (
           <div>
             <div class="row">
-              <Question q={_q} correct={this.updateCorrect} next={this.next} answered={this.state.answered} />
+              <Question q={this.state.question} correct={this.updateCorrect} next={this.next} answered={this.state.answered} />
               <Avatar was_correct={this.state.was_correct}  say={this.state.say} number={this.state.correct} />
             </div>
             <Status normals={this.state.correct} flow={this.state.flow} labels={this.state.awards} />
