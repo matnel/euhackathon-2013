@@ -1,20 +1,28 @@
-function multichoice( title, choices, correct) {
+function multichoice(title, choices, correct) {
     _q = {};
     _q.type = "multichoice";
     _q.title = title;
     _q.correct = choices[ correct ];
 
     _q.choices = [];
+
+    var answers = [];
     for( var i = 0; i < choices.length; i++ ) {
         _q.choices.push( {
             name : choices[i]
         } );
+
+        answers.push( {
+            answer : choices[i],
+            amount : 0
+        })
+
     }
 
     return JSON.stringify( _q );
 }
 
-function slide( title, min, max, correct) {
+function slide(title, min, max, correct) {
     _q = {};
     _q.type = "slide";
     _q.title = title;
@@ -38,7 +46,7 @@ exports.db_init = function( db ) {
 }
 
 exports.clean = function(db) {
-    for( var i = 1; i < 3; i++ ) {
-        db.set('answer-1', "{}");
+    for( var i = 1; i <= 7; i++ ) {
+        db.set('answer-' + i, "{}");
     }
 }
