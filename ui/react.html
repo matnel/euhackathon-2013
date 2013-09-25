@@ -188,9 +188,18 @@
           kori = "./images/kori5.png";
         }
 
+        var text_style = {
+          color: 'white',
+          'font-size': '50px',
+          position: 'relative',
+          top: '50px',
+          left: '-100px'
+        }
+
         return (
           <div id="nurmikko">
             <img src={kori} class="sieni" />
+            <span style={text_style}>{this.props.normals}</span>
             {
               imgs.map( function(){
                 return(
@@ -314,6 +323,8 @@
         }
 
         if( flow < 0 ) flow = 0;
+
+        console.log("total correct " + correct );
 
         this.setState( { awards : awards, say: say, correct: correct, flow: flow, was_correct : was_correct } );
       },
