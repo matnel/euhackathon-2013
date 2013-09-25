@@ -66,7 +66,7 @@ var svg = d3.select( container ).append("svg")
 
 svg.selectAll(".bar")    
         .data(data)                      // <== This line
-        .style("fill", function(d, i){return d.answer == answer?"#0299E6":"#FF0202";});     
+        .style("fill", function(d, i){return d.answer == answer?"#FF0202":"#0299E6";});     
 
 //});
 
