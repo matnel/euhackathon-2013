@@ -166,12 +166,14 @@
 
           <div>
             <h1>{this.props.q.title}</h1>
+            <div>
+              <button class="btn btn-large btn-primary" onClick={this.go} style={s} >Ok, go</button>
+              <button class="btn btn-large" onClick={this.props.next} style={s2}>Next</button>
+            </div>
             <div class="questions-box">
             <Choice type={this.props.q.type} data={this.state.data} choices={this.props.q.choices} answer={this.saveAnswer} done={this.props.answered} correct={this.props.q.correct} />
             <Slider type={this.props.q.type} data={this.state.data} max={this.props.q.max} min={this.props.q.min} answer={this.saveAnswer} done={this.props.answered} correct={this.props.q.correct} />
             </div>
-            <button class="btn btn-large btn-primary" onClick={this.go} style={s} >Ok, go</button>
-            <button class="btn btn-large" onClick={this.props.next} style={s2}>Next</button>
             <img src = {kuvaaja} id="infoplot" class='kuvaaja' style = {s2} />
           </div>
           );
