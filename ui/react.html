@@ -215,6 +215,7 @@
         return (
           <div id="avatar" class="col-lg-6">
             <img src={badger} />
+            <img src='./images/snake.png' display : this.props.was_correct ? 'none' : 'inline' />
             <span style={say}>{this.props.say}</span>       
           </div>
         );
@@ -295,6 +296,7 @@
         } else {
           flow = 0;
           say = "It's a snake, it's a snake...";
+
         }
 
         if( flow < 0 ) flow = 0;
