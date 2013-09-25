@@ -17,6 +17,12 @@ var xAxis = d3.svg.axis()
     .scale(x)
     .orient("bottom");
 
+if( data.length > 10 ) {
+  xAxis.tickValues(
+    d3.range(0 , 100, 10)
+  );
+}
+
 var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left")
