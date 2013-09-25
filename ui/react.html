@@ -131,18 +131,24 @@
 
       go : function() {
         var component = this;
-        console.log( ">>>>>>>>" );
-        console.log( this.state.answer );
         $.post('/response/' + this.props.q.id , { answer : this.state.answer }, function(response) {
-          // pre-process data for suitable format
-          console.log( JSON.stringify( response ) );
+          console.log("should response " + component.props.q.correct );
+          var correct = component.props.q.correct;
+          console.log("has response " + component.state.answer );
+          var answer = component.state.answer;
+
+          console.log("fix");
+          console.log(answer == correct );
+
+          component.props.correct( answer == correct );
+
           component.setState( { data : response } );
-          component.props.correct( component.props.q.correct == component.state.answer );
+          
+          
         } );
       },
 
       saveAnswer : function(answer) {
-        console.log( "save " + answer );
         this.setState( {answer: answer } );
       },
 
@@ -213,13 +219,18 @@
           padding: '5px'
         }
 
-      console.log( this.props.was_correct );
         var badger = this.props.was_correct ? './images/badger2.png' : './images/badger1.png' ;
+
+        var show = {
+          display : this.props.say == "It's a snake, it's a snake..." ? 'inline' : 'none'
+        };
+
         return (
           <div id="avatar" class="col-lg-6">
             <img src={badger} />
-            <img src='./images/snake.png' display : this.props.was_correct ? 'none' : 'inline' />
-            <span style={say}>{this.props.say}</span>       
+            
+            <span style={say}>{this.props.say}</span> 
+            <img src='./images/snake.png' style={show}  />  
           </div>
         );
       }
@@ -276,6 +287,8 @@
         var say = "";
         var awards = this.state.awards;
         var was_correct = false;
+
+        console.log("we haz signal!");
 
         if( ok ) {
 
