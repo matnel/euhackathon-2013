@@ -63,7 +63,7 @@
         });
 
         $('#plot-slide').html('');
-        lineChart([[1, 30], [3, 29], [8, 5]], "#plot-slide", this.props.correct);
+        lineChart( this.props.data , "#plot-slide", this.props.correct);
       }
 
 
@@ -85,7 +85,7 @@
 
       componentDidUpdate : function(){
         $('#plot-choice').html('');
-         barPlot([{alpha: "a", amount: 3}, {alpha: "b", amount: 10}, {alpha: "c", amount: 4}], "#plot-choice", this.props.correct);
+         barPlot( this.props.data , "#plot-choice", this.props.correct);
       },
 
       render : function() {
@@ -125,13 +125,15 @@
       getInitialState: function() {
         return {
           answer: null,
+          data: [ {'1' : 1} , {'2': 2}]
         };
       },
 
       go : function() {
         var component = this;
         $.post('/response/' + this.props.q.id , { answer : this.state.answer }, function(response) {
-          console.log( response );
+          // pre-process data for suitable format
+          component.setState( { data : response } );
           component.props.correct( component.props.q.correct == component.state.answer );
         } );
       },
@@ -152,8 +154,8 @@
           <div class="col-lg-6">
             <h1>{this.props.q.title}</h1>
             <div class="questions-box">
-            <Choice type={this.props.q.type} choices={this.props.q.choices} answer={this.saveAnswer} done={this.props.answered} />
-            <Slider type={this.props.q.type} max={this.props.q.max} min={this.props.q.min} answer={this.saveAnswer} done={this.props.answered} />
+            <Choice type={this.props.q.type} data={this.state.data} choices={this.props.q.choices} answer={this.saveAnswer} done={this.props.answered} />
+            <Slider type={this.props.q.type} data={this.state.data} max={this.props.q.max} min={this.props.q.min} answer={this.saveAnswer} done={this.props.answered} />
             </div>
             <button class="btn btn-large btn-primary" onClick={this.go} style={s} >Ok, go</button>
             <button class="btn btn-large" onClick={this.props.next} style={s2}>Next</button>
