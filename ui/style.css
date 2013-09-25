@@ -45,3 +45,7 @@
   stroke: violet;
   stroke-width: 1.5px;
 }
+
+body {
+  background: linear-gradient( #C9ECFF, #FFFFFF);
+}
