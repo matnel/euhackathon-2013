@@ -272,7 +272,7 @@
           flow : 0,
           awards : [],
           question : { type : 'slide'},  // hack, fixme
-          question_id : 2
+          question_id : 1
         };
       },
 
@@ -320,9 +320,9 @@
 
       next: function() {
         var component = this;
-        $.get('/question/' + this.state.question_id , function(res) {
-          var next = component.state.question_id + 1;
-          console.log( "Next " + next );
+        var next = component.state.question_id + 1;
+
+        $.get('/question/' + next , function(res) {
           component.setState( { question : res, question_id: next, answered: false, was_correct : false  });
 
         } );
