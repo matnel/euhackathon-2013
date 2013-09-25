@@ -1,7 +1,7 @@
 
 
 function barPlot(data, container, answer){
-console.log("moi");
+
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = 500 - margin.left - margin.right,
     height = 300 - margin.top - margin.bottom;
@@ -29,8 +29,9 @@ var svg = d3.select( container ).append("svg")
 
 //d3.tsv("data3.tsv", type, function(error, data) {
   //data = [{alpha: "a", amount: 3}, {alpha: "b", amount: 10}, {alpha: "c", amount: 4}]
-  x.domain(data.map(function(d) { return d.alpha; }));
+  x.domain(data.map(function(d) { return d.answer; }));
   y.domain([0, d3.max(data, function(d) { return d.amount; })]);
+//  lineChart([{answer:1, amount:30}, {answer:3, amount:29}, {answer:8, amount:5}}, "#plot-slide", this.props.correct);
 
   svg.append("g")
       .attr("class", "x axis")
@@ -51,7 +52,7 @@ var svg = d3.select( container ).append("svg")
       .data(data)
     .enter().append("rect")
       .attr("class", "bar")
-      .attr("x", function(d) { return x(d.alpha); })
+      .attr("x", function(d) { return x(d.answer); })
       .attr("width", x.rangeBand())
       .attr("y", function(d) { return y(d.amount); })
       .attr("height", function(d) { return height - y(d.amount); });
@@ -59,7 +60,7 @@ var svg = d3.select( container ).append("svg")
 
 svg.selectAll(".bar")    
         .data(data)                      // <== This line
-        .style("fill", function(d, i){return d.alpha == answer?"red":"limegreen";});     
+        .style("fill", function(d, i){return d.answer == answer?"red":"limegreen";});     
 
 //});
 
