@@ -12,7 +12,7 @@ function multichoice(db, id, title, choices, correct) {
             name : choices[i]
         } );
 
-        answers[ choices[i] ] = Math.floor(Math.random() * 100); // demo only
+        answers[ choices[i] ] = Math.floor(Math.random() * 10); // demo only
     }
 
     console.log( answers );
@@ -36,7 +36,7 @@ function slide(db, id, title, min, max, correct) {
     var answers = {};
 
     for( var i = min; i <= max; i++ ) {
-        answers[ i ] = Math.floor(Math.random() * 100); // demo only
+        answers[ i ] = Math.floor(Math.random() * 10); // demo only
     }
     db.set('answer-' + id, JSON.stringify( answers ) );
 }
