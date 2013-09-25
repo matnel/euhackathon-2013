@@ -129,7 +129,11 @@
       },
 
       go : function() {
-        this.props.correct( this.props.q.correct == this.state.answer );
+        var component = this;
+        $.post('/response/' + this.props.q.id , { answer : this.state.answer }, function(response) {
+          console.log( response );
+          component.props.correct( component.props.q.correct == component.state.answer );
+        } );
       },
 
       saveAnswer : function(answer) {
@@ -258,7 +262,7 @@
       },
 
       updateCorrect: function(ok) {
-        this.setState( { answered: true });
+        this.setState( { answered: true } );
         this.state.all++;
 
         var correct = this.state.correct;

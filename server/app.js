@@ -8,10 +8,12 @@ var redis = require('redis');
 var db = redis.createClient();
 
 require('./fill.js').db_init( db );
+require('./fill.js').clean( db );
 
 app.post('/response/:id', function(req, res){
 	var id = req.params.id;
 	db.get('answer-' + id, function(err, reply) {
+		console.log( reply );
   		reply = JSON.parse( reply );
 
   		res.setHeader('Content-Type', 'text/json');

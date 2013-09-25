@@ -31,3 +31,9 @@ exports.db_init = function( db ) {
     db.set('question-1', slide("During 2013 United States made 11000-12000 information requests to Facebook. How many percent (%) of these were accepted?", 0, 100, 79) );
     db.set('question-2', multichoice("From 2010 to 2012 the number of Germany’s information requests to Google increased. How many times more information requests were made in 2012 than in 2010?", ['Same amount', 'Twice as much', 'Ten times more'], 1) );
 }
+
+exports.clean = function(db) {
+    for( var i = 1; i < 3; i++ ) {
+        db.set('answer-1', "[]");
+    }
+}
