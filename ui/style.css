@@ -9,6 +9,38 @@
 	height: 150px;
 }
 
+/*.imageStyle {
+  position: relative;
+   right: 0px;
+   bottom:0px;
+  width: 40%;
+}
+*/
+.badgerStyle {
+  width: 200px;
+  position: relative;
+  top:145px;
+  left:900px;
+}
+
+.snakeStyle{
+  position:relative;
+  top:225px;
+  left: 750px;
+  width: 200px;
+  
+}
+
+.sayStyle{
+
+position:relative;
+top:100px;
+left: 900px;
+
+}
+
+}
+
 .hide{
 	display: none;
 }

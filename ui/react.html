@@ -164,7 +164,7 @@
           return (
 
 
-          <div class="col-lg-6">
+          <div>
             <h1>{this.props.q.title}</h1>
             <div class="questions-box">
             <Choice type={this.props.q.type} data={this.state.data} choices={this.props.q.choices} answer={this.saveAnswer} done={this.props.answered} correct={this.props.q.correct} />
@@ -240,33 +240,15 @@
         };
 
         return (
-          <div id="avatar" class="col-lg-6">
-            <img src={badger} />
+          <div id="avatar" class="imageStyle">
+            <img src={badger} class ="badgerStyle"/>
             
-            <span style={say}>{this.props.say}</span> 
-            <img src='./images/snake.png' style={show}  />  
+            <span style={say} class="sayStyle">{this.props.say}</span> 
+            <img src='./images/snake.png' style={show} class = "snakeStyle" />  
           </div>
         );
       }
     });
-
-    // _q = {};
-    // _q.title = "Minne matka?";
-    // _q.type = "multichoice";
-    // _q.choices = [  { name : 'Ruotsiin', number : '20' , correct : false } , 
-    //                 { name : 'Saksaan', number : '10' , correct : false } ,
-    //                 { name : 'Brysseliin', number : '20' , correct : true }
-    //              ];
-    // _q.correct = 'Brysseliin';
-
-    // _q = {};
-    // _q.title = "Minne matka?";
-    // _q.type = "slide";
-    // _q.min = 5;
-    // _q.max = 10;
-    // _q.error = 3;
-    // _q.correct = 10;
-
 
     var Main = React.createClass( {
 
@@ -278,10 +260,10 @@
         } );
 
         return {
-          say: '',
-          correct : 0,
+          say: "It's a snake, it's a snake...",
+          correct : 3,
           all : 0,
-          answered : false,
+          answered : true,
           was_correct : false,
           flow : 0,
           awards : [],
@@ -347,10 +329,8 @@
       render: function() {
         return (
           <div>
-            <div class="row">
               <Question q={this.state.question} correct={this.updateCorrect} next={this.next} answered={this.state.answered} questionid = {this.state.question_id} />
               <Avatar was_correct={this.state.was_correct}  say={this.state.say} number={this.state.correct} />
-            </div>
             <Status normals={this.state.correct} flow={this.state.flow} labels={this.state.awards} />
           </div>
         );
