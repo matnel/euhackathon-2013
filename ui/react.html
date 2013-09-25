@@ -43,7 +43,7 @@
         return(<div>
             <div id="tulos" style={answer}>{this.state.value}</div>
             <div id = "slideri" style={answer}></div>
-            <div id = "plot-slide" style={results}></div>
+            <div id = "plot-slide" style={results} class='kuvaaja'></div>
           </div>
         )
       },
@@ -114,7 +114,7 @@
                       </p>);
             })
           }
-          <div id="plot-choice" style={results}></div>
+          <div id="plot-choice" style={results} class='kuvaaja'></div>
           </div>
         )
       }
@@ -172,7 +172,7 @@
             </div>
             <button class="btn btn-large btn-primary" onClick={this.go} style={s} >Ok, go</button>
             <button class="btn btn-large" onClick={this.props.next} style={s2}>Next</button>
-            <img src = {kuvaaja} id="infoplot" style = {s2} />
+            <img src = {kuvaaja} id="infoplot" class='kuvaaja' style = {s2} />
           </div>
           );
       }
@@ -195,15 +195,15 @@
 
         var text_style = {
           color: 'white',
-          'font-size': '50px',
+          'font-size': '20px',
           position: 'relative',
           top: '50px',
-          left: '-100px'
+          left: '-60px'
         }
 
         return (
           <div id="nurmikko">
-            <img src={kori} class="sieni" />
+            <img src={kori} class="sieni" id='kori' />
             <span style={text_style}>{this.props.normals}</span>
             {
               imgs.map( function(){

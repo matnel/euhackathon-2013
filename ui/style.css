@@ -82,6 +82,19 @@ body {
   background: linear-gradient( #C9ECFF, #FFFFFF);
 }
 
+#avatar {}
+
+.kuvaaja {
+  position: absolute;
+  top: 150px;
+}
+
+#kori {
+  height: 100px;
+  margin-top: 50px;
+}
+
+
 #infoplot {
   position: absolute;
   top: 150px;
