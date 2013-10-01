@@ -1,2 +1,4 @@
-euhcack-2013
-============
+Live Demo
+====
+
+http://labs.humanisti.fixme.fi:8000/ui/react.html
